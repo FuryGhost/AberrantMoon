@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d23o2bqjkslol"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i73dj"]
+
+[node name="Main" type="Node"]
+
+[node name="TempGround" type="StaticBody2D" parent="."]
+position = Vector2(-116, 597)
+
+[node name="ColorRect" type="ColorRect" parent="TempGround"]
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 1366.0
+offset_bottom = 65.0
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempGround"]
+shape = SubResource("WorldBoundaryShape2D_i73dj")
