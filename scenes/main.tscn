@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d23o2bqjkslol"]
+[gd_scene load_steps=3 format=3 uid="uid://d23o2bqjkslol"]
+
+[ext_resource type="PackedScene" uid="uid://c14cya2662ku3" path="res://scenes/player.tscn" id="1_dmvxb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i73dj"]
+distance = -3.0
 
 [node name="Main" type="Node"]
 
@@ -16,3 +19,6 @@ color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempGround"]
 shape = SubResource("WorldBoundaryShape2D_i73dj")
+
+[node name="Player" parent="." instance=ExtResource("1_dmvxb")]
+position = Vector2(529, 409)
