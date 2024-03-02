@@ -87,6 +87,10 @@ shape = SubResource("WorldBoundaryShape2D_ujxfy")
 [node name="Walls" type="StaticBody2D" parent="Interactable"]
 position = Vector2(-116, 597)
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(1276, -299)
+shape = SubResource("RectangleShape2D_uiohj")
+
 [node name="ColorRect2" type="ColorRect" parent="Interactable/Walls"]
 offset_left = 1209.0
 offset_top = -640.0
@@ -94,8 +98,8 @@ offset_right = 1345.0
 offset_bottom = 41.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactable/Walls"]
-position = Vector2(1276, -299)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(80, -300)
 shape = SubResource("RectangleShape2D_uiohj")
 
 [node name="ColorRect" type="ColorRect" parent="Interactable/Walls"]
@@ -105,9 +109,9 @@ offset_right = 149.0
 offset_bottom = 40.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Walls"]
-position = Vector2(80, -300)
-shape = SubResource("RectangleShape2D_uiohj")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(311, -23)
+shape = SubResource("RectangleShape2D_usb77")
 
 [node name="ColorRect3" type="ColorRect" parent="Interactable/Walls"]
 offset_left = 234.0
@@ -116,9 +120,9 @@ offset_right = 388.0
 offset_bottom = 26.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Interactable/Walls"]
-position = Vector2(311, -23)
-shape = SubResource("RectangleShape2D_usb77")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(858, -72)
+shape = SubResource("RectangleShape2D_yxabi")
 
 [node name="ColorRect4" type="ColorRect" parent="Interactable/Walls"]
 offset_left = 732.0
@@ -127,11 +131,8 @@ offset_right = 984.0
 offset_bottom = -60.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Interactable/Walls"]
-position = Vector2(858, -72)
-shape = SubResource("RectangleShape2D_yxabi")
-
 [node name="MoonHitArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoonHitArea"]
 position = Vector2(83.5, 280.5)
