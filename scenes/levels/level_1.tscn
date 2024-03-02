@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn218lmd123g4"]
+[gd_scene load_steps=11 format=3 uid="uid://bn218lmd123g4"]
 
-[ext_resource type="PackedScene" uid="uid://c14cya2662ku3" path="res://scenes/player.tscn" id="1_2l6im"]
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_43jy7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ujxfy"]
@@ -65,9 +64,6 @@ offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.027451, 0.054902, 0.0431373, 1)
-
-[node name="Player" parent="." instance=ExtResource("1_2l6im")]
-position = Vector2(523, 541)
 
 [node name="Interactable" type="Node2D" parent="."]
 
