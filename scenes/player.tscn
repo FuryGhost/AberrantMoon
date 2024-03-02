@@ -1,20 +1,109 @@
-[gd_scene load_steps=3 format=3 uid="uid://c14cya2662ku3"]
+[gd_scene load_steps=16 format=3 uid="uid://c14cya2662ku3"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_04h20"]
+[ext_resource type="Texture2D" uid="uid://byg3si815k4ed" path="res://art/default_sitting.png" id="2_t7sc4"]
+[ext_resource type="Texture2D" uid="uid://xxwvoh3ohuwh" path="res://art/run_animation.png" id="3_fkdkv"]
+[ext_resource type="Texture2D" uid="uid://2pn7swojfn34" path="res://art/fall_animation.png" id="3_gmbjt"]
+[ext_resource type="Texture2D" uid="uid://dr1o04lvi18ff" path="res://art/jump_animation.png" id="4_iblod"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bcid7"]
-radius = 25.0
-height = 60.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_fym87"]
+atlas = ExtResource("3_gmbjt")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7ish"]
+atlas = ExtResource("4_iblod")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72eq8"]
+atlas = ExtResource("3_fkdkv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypcyp"]
+atlas = ExtResource("3_fkdkv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esf34"]
+atlas = ExtResource("3_fkdkv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lewf"]
+atlas = ExtResource("3_fkdkv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d02w6"]
+atlas = ExtResource("3_fkdkv")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfeli"]
+atlas = ExtResource("3_fkdkv")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2k610"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t7sc4")
+}],
+"loop": true,
+"name": &"default_sitting",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fym87")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7ish")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72eq8")
+}],
+"loop": true,
+"name": &"mid_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypcyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esf34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lewf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d02w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfeli")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e22s0"]
+radius = 45.0444
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_04h20")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -25.0
-offset_top = -29.0
-offset_right = 26.0
-offset_bottom = 30.0
-color = Color(0.211765, 0.227451, 0.262745, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_2k610")
+animation = &"mid_jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_bcid7")
+position = Vector2(0, 19)
+shape = SubResource("CircleShape2D_e22s0")
