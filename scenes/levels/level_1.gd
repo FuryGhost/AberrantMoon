@@ -15,10 +15,8 @@ func _process(delta):
 
 
 func _on_moon_hit_area_body_entered(body):
-	print("in_moon_sight")
 	in_moon_sight.emit()
 
 
 func _on_moon_hit_area_body_exited(body):
-	print("out_moon_sight")
 	out_moon_sight.emit()
