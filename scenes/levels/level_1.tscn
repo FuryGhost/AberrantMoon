@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=3 uid="uid://bn218lmd123g4"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_43jy7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ujxfy"]
+distance = -3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uiohj"]
+size = Vector2(134, 686)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usb77"]
+size = Vector2(153, 96.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxabi"]
+size = Vector2(252, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1a0x"]
+size = Vector2(319, 637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70adk"]
+size = Vector2(257, 692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mncx"]
+size = Vector2(350, 663)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbcu7"]
+size = Vector2(164, 341)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyqxy"]
+size = Vector2(258, 550)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_43jy7")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Background"]
+position = Vector2(567.069, 293.301)
+
+[node name="ColorRect2" type="ColorRect" parent="Background/CanvasGroup"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 222.0
+offset_right = 290.0
+offset_bottom = 347.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.027451, 0.054902, 0.0431373, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Background/CanvasGroup"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -323.0
+offset_top = 3.0
+offset_right = -197.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.027451, 0.054902, 0.0431373, 1)
+
+[node name="Interactable" type="Node2D" parent="."]
+
+[node name="TempGround" type="StaticBody2D" parent="Interactable"]
+position = Vector2(-116, 597)
+
+[node name="ColorRect" type="ColorRect" parent="Interactable/TempGround"]
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 1366.0
+offset_bottom = 65.0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/TempGround"]
+shape = SubResource("WorldBoundaryShape2D_ujxfy")
+
+[node name="Walls" type="StaticBody2D" parent="Interactable"]
+position = Vector2(-116, 597)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(1276, -299)
+shape = SubResource("RectangleShape2D_uiohj")
+
+[node name="ColorRect2" type="ColorRect" parent="Interactable/Walls"]
+offset_left = 1209.0
+offset_top = -640.0
+offset_right = 1345.0
+offset_bottom = 41.0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(80, -300)
+shape = SubResource("RectangleShape2D_uiohj")
+
+[node name="ColorRect" type="ColorRect" parent="Interactable/Walls"]
+offset_left = 13.0
+offset_top = -641.0
+offset_right = 149.0
+offset_bottom = 40.0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(311, -23)
+shape = SubResource("RectangleShape2D_usb77")
+
+[node name="ColorRect3" type="ColorRect" parent="Interactable/Walls"]
+offset_left = 234.0
+offset_top = -71.0
+offset_right = 388.0
+offset_bottom = 26.0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Interactable/Walls"]
+position = Vector2(858, -72)
+shape = SubResource("RectangleShape2D_yxabi")
+
+[node name="ColorRect4" type="ColorRect" parent="Interactable/Walls"]
+offset_left = 732.0
+offset_top = -84.0
+offset_right = 984.0
+offset_bottom = -60.0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="MoonHitArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonHitArea"]
+position = Vector2(83.5, 280.5)
+shape = SubResource("RectangleShape2D_f1a0x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MoonHitArea"]
+position = Vector2(499.5, 270)
+shape = SubResource("RectangleShape2D_70adk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="MoonHitArea"]
+position = Vector2(1032, 287.5)
+shape = SubResource("RectangleShape2D_2mncx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="MoonHitArea"]
+position = Vector2(305, 125.5)
+shape = SubResource("RectangleShape2D_fbcu7")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="MoonHitArea"]
+position = Vector2(739, 238)
+shape = SubResource("RectangleShape2D_wyqxy")
+
+[connection signal="body_entered" from="MoonHitArea" to="." method="_on_moon_hit_area_body_entered"]
+[connection signal="body_exited" from="MoonHitArea" to="." method="_on_moon_hit_area_body_exited"]
