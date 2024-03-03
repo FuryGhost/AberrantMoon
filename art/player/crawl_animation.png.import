@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr1o04lvi18ff"
-path="res://.godot/imported/jump_animation.png-03b49b04bf78f5e52e39d6d96f9ea07a.ctex"
+uid="uid://b471uopt72to2"
+path="res://.godot/imported/crawl_animation.png-634151e4df77f03560f368c3dee295d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/jump_animation.png"
-dest_files=["res://.godot/imported/jump_animation.png-03b49b04bf78f5e52e39d6d96f9ea07a.ctex"]
+source_file="res://art/player/crawl_animation.png"
+dest_files=["res://.godot/imported/crawl_animation.png-634151e4df77f03560f368c3dee295d1.ctex"]
 
 [params]
 

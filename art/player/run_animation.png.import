@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b471uopt72to2"
-path="res://.godot/imported/crawl_animation.png-e865afcf52acd06fb51630fc8bc66f98.ctex"
+uid="uid://xxwvoh3ohuwh"
+path="res://.godot/imported/run_animation.png-794be0c9ef27bbfb21e2c101f3091799.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/crawl_animation.png"
-dest_files=["res://.godot/imported/crawl_animation.png-e865afcf52acd06fb51630fc8bc66f98.ctex"]
+source_file="res://art/player/run_animation.png"
+dest_files=["res://.godot/imported/run_animation.png-794be0c9ef27bbfb21e2c101f3091799.ctex"]
 
 [params]
 
