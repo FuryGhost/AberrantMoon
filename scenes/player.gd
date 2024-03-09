@@ -54,11 +54,18 @@ func _physics_process(delta):
 			_jump_boost_direction = direction
 	
 	if !is_on_floor():
+		rotation = 0
+		
 		if velocity.y > -100 && velocity.y < 100:
 			$AnimatedSprite2D.play("mid_jump")
 		elif velocity.y < 0:
 			$AnimatedSprite2D.play("jump")
 		else:
 			$AnimatedSprite2D.play("fall")
+	else:
+		rotation = get_floor_angle()
+		
+		if get_floor_normal().x < 0:
+			rotation *= -1
 	
 	move_and_slide()
