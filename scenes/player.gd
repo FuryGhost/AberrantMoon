@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 		
-		if direction == _jump_boost_direction:
+		if direction == _jump_boost_direction && !is_on_floor():
 			velocity.x += direction * JUMP_BOOST_SPEED
 		else:
 			_jump_boost_direction = 0
