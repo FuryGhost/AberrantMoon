@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # Constants
 const SPEED = 300.0
+const CROUCH_SPEED = 100.0
 const JUMP_VELOCITY = -800.0
 const JUMP_BOOST_SPEED = 100.0
 
@@ -13,6 +14,8 @@ var _jump_boost_direction = 0
 
 # @onready variables
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sit_run_collision_shape: CollisionShape2D = $SitRunCollisionShape
+@onready var crouch_collision_shape: CollisionShape2D = $CrouchCollisionShape
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,17 +26,20 @@ func _ready():
 
 func _physics_process(delta):
 	var on_floor: bool = is_on_floor()
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction: float = Input.get_axis("move_left", "move_right")
+	var is_crouching: bool = Input.is_action_pressed("crouch") && on_floor
 	
 	_handle_gravity(delta, on_floor)
 	
-	_handle_horizontal_move(delta, on_floor, direction)
+	_handle_horizontal_move(delta, on_floor, direction, is_crouching)
 	
 	_handle_jump(on_floor, direction)
 	
 	_handle_rotation(on_floor)
 	
-	_handle_animation(on_floor, direction)
+	_handle_animation(on_floor, direction, is_crouching)
+	
+	_handle_collision_shape(is_crouching)
 	
 	move_and_slide()
 
@@ -41,9 +47,12 @@ func _handle_gravity(delta: float, on_floor: bool):
 	if not on_floor:
 		velocity.y += gravity * delta
 
-func _handle_horizontal_move(delta: float, on_floor: bool, direction: float):
+func _handle_horizontal_move(delta: float, on_floor: bool, direction: float, is_crouching: bool):
 	if direction:
-		velocity.x = direction * SPEED
+		if is_crouching:
+			velocity.x = direction * CROUCH_SPEED
+		else:
+			velocity.x = direction * SPEED
 		
 		if direction == _jump_boost_direction && !on_floor:
 			velocity.x += direction * JUMP_BOOST_SPEED
@@ -72,11 +81,18 @@ func _handle_rotation(on_floor: bool):
 		var rotation_direction = 1 if get_floor_normal().x >= 0 else -1
 		rotation = get_floor_angle() * rotation_direction
 
-func _handle_animation(on_floor: bool, direction: float):
+func _handle_animation(on_floor: bool, direction: float, is_crouching: bool):
 	if direction:
 		animated_sprite.flip_h = direction < 0
 	
-	if on_floor:
+	if is_crouching:
+		if direction:
+			animated_sprite.play("crouch")
+		else:
+			animated_sprite.stop()
+			animated_sprite.animation = "crouch"
+			animated_sprite.frame = 0
+	elif on_floor:
 		if direction:
 			animated_sprite.play("run")
 		else:
@@ -88,3 +104,7 @@ func _handle_animation(on_floor: bool, direction: float):
 			animated_sprite.play("jump")
 		else:
 			animated_sprite.play("fall")
+
+func _handle_collision_shape(is_crouching: bool):
+	sit_run_collision_shape.set_deferred("disabled", is_crouching)
+	crouch_collision_shape.set_deferred("disabled", !is_crouching)
