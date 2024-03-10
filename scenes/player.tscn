@@ -127,7 +127,7 @@ script = ExtResource("1_04h20")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2k610")
-animation = &"crouch"
+animation = &"default_sitting"
 
 [node name="SitRunCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 19)
