@@ -1,10 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://c14cya2662ku3"]
+[gd_scene load_steps=20 format=3 uid="uid://c14cya2662ku3"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_04h20"]
+[ext_resource type="Texture2D" uid="uid://b471uopt72to2" path="res://art/player/crawl_animation.png" id="2_ppdks"]
 [ext_resource type="Texture2D" uid="uid://byg3si815k4ed" path="res://art/player/default_sitting.png" id="2_wni53"]
 [ext_resource type="Texture2D" uid="uid://2pn7swojfn34" path="res://art/player/fall_animation.png" id="3_6w5vm"]
 [ext_resource type="Texture2D" uid="uid://dr1o04lvi18ff" path="res://art/player/jump_animation.png" id="4_n4m61"]
 [ext_resource type="Texture2D" uid="uid://xxwvoh3ohuwh" path="res://art/player/run_animation.png" id="5_en0ym"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nila"]
+atlas = ExtResource("2_ppdks")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hg2l"]
+atlas = ExtResource("2_ppdks")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fym87"]
 atlas = ExtResource("3_6w5vm")
@@ -40,6 +49,17 @@ region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2k610"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nila")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hg2l")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_wni53")
@@ -96,6 +116,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_e22s0"]
 radius = 45.0444
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ce6li"]
+radius = 23.0
+height = 90.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_04h20")
@@ -103,8 +127,14 @@ script = ExtResource("1_04h20")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2k610")
-animation = &"run"
+animation = &"default_sitting"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="SitRunCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 19)
 shape = SubResource("CircleShape2D_e22s0")
+
+[node name="CrouchCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 41)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ce6li")
+disabled = true
