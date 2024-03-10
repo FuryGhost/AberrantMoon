@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn218lmd123g4"]
+[gd_scene load_steps=10 format=3 uid="uid://bn218lmd123g4"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_43jy7"]
 [ext_resource type="Texture2D" uid="uid://bne7edw5fcbl8" path="res://art/spritesheets/foreground_spritesheet.png" id="2_5xrkk"]
+[ext_resource type="PackedScene" uid="uid://3j3g8dpbbvxp" path="res://scenes/utility/camera_area.tscn" id="3_ktpt1"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_3foua"]
 tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1, 1, 327680, 0, 65537, 327680, 1, 2, 393216, 0, 65538, 393216, 1, 3, 458752, 0, 65539, 458752, 1, 4, 524288, 0, 65540, 524288, 1)
@@ -185,6 +186,12 @@ sources/0 = SubResource("TileSetAtlasSource_hbb50")
 pattern_0 = SubResource("TileMapPattern_3foua")
 pattern_1 = SubResource("TileMapPattern_u72hr")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f4ld"]
+size = Vector2(1728, 1120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kryu6"]
+size = Vector2(1816, 1020)
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_43jy7")
 
@@ -199,5 +206,28 @@ layer_0/tile_data = PackedInt32Array(655358, 0, 1, 720894, 0, 0, 786430, 0, 0, 8
 
 [node name="MoonHitArea" type="Area2D" parent="."]
 
+[node name="CameraAreas" type="Node" parent="."]
+
+[node name="CameraArea1" parent="CameraAreas" instance=ExtResource("3_ktpt1")]
+visible = false
+position = Vector2(-8, 0)
+
+[node name="PlayerCollisionShape" parent="CameraAreas/CameraArea1" index="0"]
+position = Vector2(808, 520)
+shape = SubResource("RectangleShape2D_4f4ld")
+
+[node name="CameraArea2" parent="CameraAreas" instance=ExtResource("3_ktpt1")]
+visible = false
+position = Vector2(1624, -184)
+
+[node name="PlayerCollisionShape" parent="CameraAreas/CameraArea2" index="0"]
+position = Vector2(1044, 310)
+shape = SubResource("RectangleShape2D_kryu6")
+
 [connection signal="body_entered" from="MoonHitArea" to="." method="_on_moon_hit_area_body_entered"]
 [connection signal="body_exited" from="MoonHitArea" to="." method="_on_moon_hit_area_body_exited"]
+[connection signal="camera_move" from="CameraAreas/CameraArea1" to="." method="_on_camera_area_camera_move"]
+[connection signal="camera_move" from="CameraAreas/CameraArea2" to="." method="_on_camera_area_camera_move"]
+
+[editable path="CameraAreas/CameraArea1"]
+[editable path="CameraAreas/CameraArea2"]

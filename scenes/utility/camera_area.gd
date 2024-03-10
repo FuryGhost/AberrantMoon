@@ -1,10 +1,10 @@
-extends Node2D
+extends Area2D
 
 # Signals
-signal in_moon_sight
-signal out_moon_sight
 signal camera_move(new_position: Vector2)
 
+# @onready variables
+@onready var camera_position: Vector2 = $CameraPosition.global_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,13 +16,5 @@ func _process(delta):
 	pass
 
 
-func _on_moon_hit_area_body_entered(body):
-	in_moon_sight.emit()
-
-
-func _on_moon_hit_area_body_exited(body):
-	out_moon_sight.emit()
-
-
-func _on_camera_area_camera_move(new_position):
-	camera_move.emit(new_position)
+func _on_body_entered(body):
+	camera_move.emit(camera_position)
