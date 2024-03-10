@@ -1,6 +1,10 @@
 extends Node
 
 
+# @onready variables
+@onready var camera: Camera2D = $Camera2D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,4 +19,4 @@ func _process(delta):
 
 
 func _on_level_camera_move(new_position):
-	$Camera2D.position = new_position
+	camera.position = new_position
