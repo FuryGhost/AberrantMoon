@@ -20,6 +20,7 @@ jobs:
       - name: test checkout
         run: ls -l
       - name: export game
+        id: export
         # Use latest version (see releases for all versions)
         uses: firebelley/godot-export@v5.2.1
         with:
@@ -34,10 +35,10 @@ jobs:
           relative_export_path: ./testPath/
       - name: test export
         run: echo ${{ steps.export.outputs.archive_directory }}
-      - name: create release
-        uses: ncipollo/release-action@v1.14.0
-        with:
-          token: ${{ secrets.GH_CREDENTIALS }}
-          generateReleaseNotes: true
-          tag: ${{ github.ref_name }}-test
-          artifacts: ${{ steps.export.outputs.archive_directory }}/*
+      # - name: create release
+      #   uses: ncipollo/release-action@v1.14.0
+      #   with:
+      #     token: ${{ secrets.GH_CREDENTIALS }}
+      #     generateReleaseNotes: true
+      #     tag: ${{ github.ref_name }}-test
+      #     artifacts: ${{ steps.export.outputs.archive_directory }}/*
