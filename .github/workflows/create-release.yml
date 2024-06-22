@@ -33,10 +33,7 @@ jobs:
           archive_output: true
           relative_export_path: ./testPath/
       - name: test export
-        run: cd testPath/ ; ls -l
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_CREDENTIALS }}
-      #     ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        run: echo ${{ steps.export.outputs.archive_directory }}
       - name: create release
         uses: ncipollo/release-action@v1.14.0
         with:
