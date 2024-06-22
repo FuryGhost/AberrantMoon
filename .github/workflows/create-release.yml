@@ -19,17 +19,20 @@ jobs:
           fetch-depth: 0
       - name: test checkout
         run: ls -l
-      # - name: export game
-      #   # Use latest version (see releases for all versions)
-      #   uses: firebelley/godot-export@v5.2.1
-      #   with:
-      #     # Defining all the required inputs
-      #     godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-stable_linux.x86_64.zip
-      #     godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-stable_export_templates.tpz
-      #     # set this either to . or your game path, e.g. ./godot in case
-      #     # your game is within a sub-directory
-      #     relative_project_path: ./
-      #     archive_output: true
+      - name: export game
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v5.2.1
+        with:
+          # Defining all the required inputs
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-stable_export_templates.tpz
+          # set this either to . or your game path, e.g. ./godot in case
+          # your game is within a sub-directory
+          relative_project_path: ./
+          archive_output: true
+          relative_export_path: ./testPath/
+      - name: test export
+        run: ls -l
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GH_CREDENTIALS }}
       #     ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
