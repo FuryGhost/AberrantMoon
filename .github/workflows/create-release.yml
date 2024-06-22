@@ -36,10 +36,10 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GH_CREDENTIALS }}
       #     ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      # - name: create release
-      #   uses: ncipollo/release-action@v1.14.0
-      #   with:
-      #     token: ${{ secrets.GH_CREDENTIALS }}
-      #     generateReleaseNotes: true
-      #     tag: ${{ github.ref_name }}
-      #     artifacts: ${{ steps.export.outputs.archive_directory }}/*
+      - name: create release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GH_CREDENTIALS }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
