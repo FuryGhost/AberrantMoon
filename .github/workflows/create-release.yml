@@ -40,7 +40,7 @@ jobs:
       - name: create release
         uses: ncipollo/release-action@v1.14.0
         with:
-          # token: ${{ secrets.GH_CREDENTIALS }}
+          token: ${{ secrets.GH_CREDENTIALS }}
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
           replacesArtifacts: true
