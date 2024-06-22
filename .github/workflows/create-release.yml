@@ -32,7 +32,7 @@ jobs:
           archive_output: true
           relative_export_path: ./testPath/
       - name: test export
-        run: ls -l
+        run: cd testPath/ ; ls -l
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GH_CREDENTIALS }}
       #     ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
