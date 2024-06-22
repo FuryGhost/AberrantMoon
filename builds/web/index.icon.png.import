@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5p2t6nctcp4s"
-path="res://.godot/imported/InMoonSight-web.png-2a7b4e3adb9e35638b785107b04205ea.ctex"
+uid="uid://xaajjx8ijvqm"
+path="res://.godot/imported/index.icon.png-1d537cdb021c40f184d1277d96fd0f0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://builds/web/InMoonSight-web.png"
-dest_files=["res://.godot/imported/InMoonSight-web.png-2a7b4e3adb9e35638b785107b04205ea.ctex"]
+source_file="res://builds/web/index.icon.png"
+dest_files=["res://.godot/imported/index.icon.png-1d537cdb021c40f184d1277d96fd0f0f.ctex"]
 
 [params]
 
