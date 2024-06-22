@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyaik4cy36tcu"
-path="res://.godot/imported/InMoonSight-web.apple-touch-icon.png-98ac5bfd4c82eb0a4936ea081b4a2abc.ctex"
+uid="uid://dhvw7jhekgk6p"
+path="res://.godot/imported/index.png-2770f543c84e6b55d99f3bb624b49866.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://builds/web/InMoonSight-web.apple-touch-icon.png"
-dest_files=["res://.godot/imported/InMoonSight-web.apple-touch-icon.png-98ac5bfd4c82eb0a4936ea081b4a2abc.ctex"]
+source_file="res://builds/web/index.png"
+dest_files=["res://.godot/imported/index.png-2770f543c84e6b55d99f3bb624b49866.ctex"]
 
 [params]
 
