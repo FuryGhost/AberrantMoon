@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: test checkout
-        run: echo "hell no"
+        run: ls -l
       # - name: export game
       #   # Use latest version (see releases for all versions)
       #   uses: firebelley/godot-export@v5.2.1
