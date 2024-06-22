@@ -41,6 +41,7 @@ jobs:
         uses: ncipollo/release-action@v1.14.0
         with:
           # token: ${{ secrets.GH_CREDENTIALS }}
-          # generateReleaseNotes: true
-          # tag: ${{ github.ref_name }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          replacesArtifacts: true
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
