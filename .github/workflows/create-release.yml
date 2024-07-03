@@ -17,8 +17,6 @@ jobs:
         # Ensure that you get the entire project history
         with:
           fetch-depth: 0
-      - name: test checkout
-        run: ls -l
       - name: export game
         id: export
         # Use latest version (see releases for all versions)
@@ -33,15 +31,11 @@ jobs:
           relative_project_path: ./
           archive_output: true
           relative_export_path: ./testPath/
-      - name: test export
-        run: echo ${{ steps.export.outputs.archive_directory }}
       - name: get version
         id: version
         uses: reecetech/version-increment@2024.4.3
         with:
           scheme: calver
-      - name: test version
-        run: echo ${{ steps.version.outputs.current-v-version }}; echo ${{ steps.version.outputs.v-version }}
       - name: create release
         uses: ncipollo/release-action@v1.14.0
         with:
