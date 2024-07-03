@@ -47,5 +47,5 @@ jobs:
         with:
           token: ${{ secrets.GH_CREDENTIALS }}
           generateReleaseNotes: true
-          tag: ${{ github.ref_name }}-test-3
+          tag: ${{ steps.version.outputs.v-version }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
