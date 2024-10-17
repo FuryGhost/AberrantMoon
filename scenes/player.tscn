@@ -138,3 +138,8 @@ position = Vector2(0, 41)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ce6li")
 disabled = true
+
+[node name="SitRunShapeCast" type="ShapeCast2D" parent="."]
+position = Vector2(0, 19)
+shape = SubResource("CircleShape2D_e22s0")
+target_position = Vector2(0, 0)

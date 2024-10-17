@@ -11,11 +11,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Private variables
 var _jump_boost_direction = 0
+var _should_force_crouch: bool = false;
 
 # @onready variables
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sit_run_collision_shape: CollisionShape2D = $SitRunCollisionShape
 @onready var crouch_collision_shape: CollisionShape2D = $CrouchCollisionShape
+@onready var sit_run_shape_cast: ShapeCast2D = $SitRunShapeCast
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,15 +27,20 @@ func _ready():
 
 
 func _physics_process(delta):
+	_calculate_force_crouch()
+	
 	var on_floor: bool = is_on_floor()
 	var direction: float = Input.get_axis("move_left", "move_right")
-	var is_crouching: bool = Input.is_action_pressed("crouch") && on_floor
+	var should_jump: bool = (!_should_force_crouch && 
+		(Input.is_action_just_pressed("jump") && on_floor))
+	var is_crouching: bool = (_should_force_crouch || 
+		(Input.is_action_pressed("crouch") && on_floor))
 	
 	_handle_gravity(delta, on_floor)
 	
 	_handle_horizontal_move(delta, on_floor, direction, is_crouching)
 	
-	_handle_jump(on_floor, direction)
+	_handle_jump(should_jump, direction)
 	
 	_handle_rotation(on_floor)
 	
@@ -42,6 +49,16 @@ func _physics_process(delta):
 	_handle_collision_shape(is_crouching)
 	
 	move_and_slide()
+
+func _calculate_force_crouch():
+	var is_crouch_just_released = Input.is_action_just_released("crouch")
+	var is_upright_obstracted = sit_run_shape_cast.is_colliding()
+	
+	if is_crouch_just_released && is_upright_obstracted:
+		_should_force_crouch = true
+	
+	if !is_upright_obstracted:
+		_should_force_crouch = false
 
 func _handle_gravity(delta: float, on_floor: bool):
 	if not on_floor:
@@ -66,8 +83,8 @@ func _handle_horizontal_move(delta: float, on_floor: bool, direction: float, is_
 		
 		_jump_boost_direction = 0
 
-func _handle_jump(on_floor: bool, direction: float):
-	if Input.is_action_just_pressed("jump") and on_floor:
+func _handle_jump(should_jump: bool, direction: float):
+	if should_jump:
 		velocity.y = JUMP_VELOCITY
 		
 		if direction:
